@@ -1,7 +1,7 @@
 import React, { useContext, useState } from "react";
 import { AppContext } from "../utils";
 import Loader from "./Loader";
-import { useAirdropContract, useTokenContract } from "../contract/hooks";
+import { useAirdropContract } from "../contract/hooks";
 
 import { Paper, Container, Button, Box } from "@mui/material";
 
@@ -86,7 +86,7 @@ const styles = {
 const UploadCSV = () => {
 	const { account, signer, connect } = useContext(AppContext);
 	let AirdropContract = useAirdropContract(signer);
-	let tokenContract = useTokenContract();
+	// let tokenContract = useTokenContract();
 	const { CSVReader } = useCSVReader();
 	const [zoneHover, setZoneHover] = useState(false);
 	const [removeHoverColor, setRemoveHoverColor] = useState(
@@ -135,7 +135,7 @@ const UploadCSV = () => {
 
 	return (
 		<>
-			<Loader loading={loading} />
+			<Loader loading={loading} setloading={setloading} />
 			<Container>
 				<Box width="100%" display="flex" justifyContent="center">
 					<Paper sx={{ width: "300px" }}>
